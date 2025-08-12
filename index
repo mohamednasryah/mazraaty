@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>مزرعتي</title>
+<style>
+  :root{
+    --pri:#22c55e; --pri2:#16a34a;
+    --bg:#f6f7fb; --card:#ffffff; --muted:#6b7280; --ink:#0f172a;
+    --shadow:0 10px 18px rgba(0,0,0,.06); --r:16px;
+  }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Kufi Arabic","Tajawal",Arial}
+  header{background:linear-gradient(120deg,var(--pri),var(--pri2));color:#fff;padding:16px 18px}
+  header h1{margin:0;font-size:20px}
+  main{padding:16px}
+  .card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;margin-bottom:14px}
+  .muted{color:var(--muted);font-size:14px}
+  .btn{appearance:none;border:0;border-radius:12px;padding:10px 16px;font-weight:700;color:#fff;
+       background:linear-gradient(90deg,#1e88e5,#43a047)}
+  .grid{display:grid;gap:12px} .cols-3{grid-template-columns:repeat(3,1fr)}
+  .thumb{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;background:#e5e7eb}
+  .section{display:none} .section.active{display:block}
+  .nav{position:fixed;inset-inline:0;bottom:0;background:#fff;border-top:1px solid #e5e7eb;
+       display:grid;grid-template-columns:repeat(5,1fr);z-index:50}
+  .nav button{appearance:none;background:none;border:0;padding:10px 6px;font-size:13px;color:var(--muted)}
+  .nav button.active{color:var(--pri2);font-weight:700}
+  .spacer{height:64px}
+  /* Slider */
+  .slider{position:relative;border-radius:16px;overflow:hidden;height:210px;box-shadow:var(--shadow);background:#dbeafe}
+  .slides{display:flex;height:100%;transition:transform .5s ease}
+  .slide{min-width:100%;height:100%}
+  .slide img{width:100%;height:100%;object-fit:cover}
+  .dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:8px;justify-content:center}
+  .dot{width:8px;height:8px;border-radius:999px;background:#ffffff8a;transition:width .25s}
+  .dot.active{background:#fff;width:20px}
+  /* Lists */
+  .list{display:flex;flex-direction:column;gap:10px}
+  .item{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:12px;padding:10px;box-shadow:0 6px 12px rgba(0,0,0,.05)}
+  .item img{width:90px;height:68px;border-radius:10px;object-fit:cover}
+  .price-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee}
+  a.clean{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+  <header><h1>مزرعتي</h1></header>
+
+  <main>
+    <!-- الرئيسية -->
+    <section id="home" class="section active">
+      <div class="card">
+        <p class="muted">نسخة أونلاين تجريبية — تصميم خفيف وسلايدر وصور مباشرة.</p>
+        <button class="btn" onclick="showTab('invest')">ابدأ الاستثمار</button>
+      </div>
+
+      <!-- Slider (صور مباشرة) -->
+      <div class="slider" id="hero">
+        <div class="slides">
+          <div class="slide"><img src="https://images.unsplash.com/photo-1545464430-5f7e3b59a8d6?q=80&w=1400&auto=format&fit=crop" alt="مواشي"></div>
+          <div class="slide"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1400&auto=format&fit=crop" alt="محاصيل"></div>
+          <div class="slide"><img src="https://images.unsplash.com/photo-1489440543286-a69330151c0f?q=80&w=1400&auto=format&fit=crop" alt="دواجن"></div>
+        </div>
+        <div class="dots"></div>
+      </div>
+
+      <h3 style="margin:16px 4px 8px">الأقسام</h3>
+      <div class="grid cols-3" id="cats">
+        <img class="thumb" src="https://images.unsplash.com/photo-1572552632747-88a2aaad0197?q=80&w=800&auto=format&fit=crop" alt="الثروة الحيوانية" data-link="#invest">
+        <img class="thumb" src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=800&auto=format&fit=crop" alt="الثروة الزراعية" data-link="#invest">
+        <img class="thumb" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=800&auto=format&fit=crop" alt="المحفظة" data-link="#wallet">
+      </div>
+      <div class="spacer"></div>
+    </section>
+
+    <!-- الاستثمار -->
+    <section id="invest" class="section">
+      <div class="card">
+        <h3>الاستثمار</h3>
+        <div class="list">
+          <a class="clean item" href="#" onclick="openDetail('الأغنام','سلالات بلدية/مهجنة، تحصين دوري.','https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=1200&auto=format&fit=crop',95000)">
+            <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=400&auto=format&fit=crop" alt="">
+            <div><b>الأغنام</b><div class="muted">شراء ثم إظهار العلف/الفحوصات/الإيجار</div></div>
+          </a>
+          <a class="clean item" href="#" onclick="openDetail('أبقار لاحم','نمو سريع وعائد لحوم.','https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1200&auto=format&fit=crop',620000)">
+            <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=400&auto=format&fit=crop" alt="">
+            <div><b>أبقار لاحم</b><div class="muted">إدارة التغذية والتحصين</div></div>
+          </a>
+          <a class="clean item" href="#" onclick="openDetail('دواجن','بيّاض/لاحم، دورات قصيرة.','https://images.unsplash.com/photo-1546447147-3fc2b8181a0f?q=80&w=1200&auto=format&fit=crop',8500)">
+            <img src="https://images.unsplash.com/photo-1546447147-3fc2b8181a0f?q=80&w=400&auto=format&fit=crop" alt="">
+            <div><b>الدواجن</b><div class="muted">بيض/لحم</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="card" id="detail" style="display:none">
+        <h3 id="dTitle">التفاصيل</h3>
+        <img id="dImg" class="thumb" style="width:100%;height:auto;aspect-ratio:auto">
+        <p class="muted" id="dDesc"></p>
+        <div class="price-row"><span>السعر</span><b id="dPrice"></b></div>
+        <button class="btn" id="buyBtn">شراء</button>
+        <div id="afterBuy" style="display:none;margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <button class="btn" onclick="alert('شراء العلف والماء')">العلف والماء</button>
+          <button class="btn" onclick="alert('فحوصات بيطرية')">الفحوصات</button>
+          <button class="btn" onclick="alert('دفع إيجار المساحة')">الإيجار</button>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </section>
+
+    <!-- المحفظة -->
+    <section id="wallet" class="section">
+      <div class="card">
+        <h3>المحفظة</h3>
+        <div class="price-row"><span>الرصيد الإجمالي</span><b>1,245,000 د.ع</b></div>
+        <div class="price-row"><span>ممتلكاتي</span><span>أغنام 60 • دجاج 200 • خضروات 12</span></div>
+        <div class="grid cols-3" style="margin-top:10px">
+          <div class="card"><b>الإيداع</b><div class="muted">ماستر/فيزا/زين كاش</div></div>
+          <div class="card"><b>السحب</b><div class="muted">ماستر/فيزا/زين كاش</div></div>
+          <div class="card"><b>الرسم البياني</b><div class="muted">مكان مخطط الأرباح/النفقات</div></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </section>
+
+    <!-- الأخبار -->
+    <section id="news" class="section">
+      <div class="card">
+        <h3>الأخبار</h3>
+        <div class="list" id="newsList">
+          <div class="item"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=400&auto=format&fit=crop"><div><b>انخفاض طفيف بأسعار الأعلاف</b><div class="muted">هذا الأسبوع</div></div></div>
+          <div class="item"><img src="https://images.unsplash.com/photo-1489440543286-a69330151c0f?q=80&w=400&auto=format&fit=crop"><div><b>فرص استثمار جديدة</b><div class="muted">مساحات بعقود مرنة</div></div></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </section>
+
+    <!-- تواصل -->
+    <section id="contact" class="section">
+      <div class="card">
+        <h3>تواصل</h3>
+        <div class="list">
+          <div class="item"><img src="https://images.unsplash.com/photo-1525186402429-b4ff38bedbec?q=80&w=400&auto=format&fit=crop"><div><b>الهاتف</b><div class="muted"><a class="clean" href="tel:+9647700000000">+964 770 000 0000</a></div></div></div>
+          <div class="item"><img src="https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?q=80&w=400&auto=format&fit=crop"><div><b>واتساب</b><div class="muted"><a class="clean" href="https://wa.me/9647700000000" target="_blank" rel="noopener">راسلنا</a></div></div></div>
+          <div class="item"><img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?q=80&w=400&auto=format&fit=crop"><div><b>بريد</b><div class="muted"><a class="clean" href="mailto:support@mazraaty.example">support@mazraaty.example</a></div></div></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+    </section>
+  </main>
+
+  <nav class="nav">
+    <button data-tab="home" class="active">الرئيسية</button>
+    <button data-tab="invest">الاستثمار</button>
+    <button data-tab="wallet">المحفظة</button>
+    <button data-tab="news">الأخبار</button>
+    <button data-tab="contact">التواصل</button>
+  </nav>
+
+<script>
+  // تبويبات
+  const sections=[...document.querySelectorAll('.section')];
+  const tabs=[...document.querySelectorAll('.nav button')];
+  function showTab(id){
+    sections.forEach(s=>s.classList.toggle('active', s.id===id));
+    tabs.forEach(b=>b.classList.toggle('active', b.dataset.tab===id));
+    window.scrollTo(0,0);
+  }
+  tabs.forEach(b=> b.addEventListener('click', ()=> showTab(b.dataset.tab)));
+  document.getElementById('cats').addEventListener('click', e=>{
+    const t=e.target.closest('.thumb'); if(!t) return;
+    const link=t.dataset.link||'#'; if(link==='#wallet') showTab('wallet'); else showTab('invest');
+  });
+
+  // سلايدر
+  const slider=document.querySelector('#hero .slides');
+  const slides=[...document.querySelectorAll('#hero .slide')];
+  const dotsWrap=document.querySelector('#hero .dots'); let idx=0;
+  function renderDots(){ dotsWrap.innerHTML=''; slides.forEach((_,i)=>{const d=document.createElement('span'); d.className='dot'+(i===idx?' active':''); d.onclick=()=>go(i); dotsWrap.appendChild(d);});}
+  function go(i){ idx=(i+slides.length)%slides.length; slider.style.transform=`translateX(-${idx*100}%)`; renderDots(); }
+  setInterval(()=>go(idx+1), 3800); renderDots();
+
+  // صفحة تفاصيل استثمار (تجريبية)
+  function openDetail(title, desc, img, price){
+    showTab('invest');
+    const box=document.getElementById('detail');
+    box.style.display='block';
+    document.getElementById('dTitle').textContent=title;
+    document.getElementById('dDesc').textContent=desc;
+    document.getElementById('dImg').src=img;
+    document.getElementById('dPrice').textContent=price.toLocaleString('ar-IQ')+' د.ع';
+    const buy=document.getElementById('buyBtn');
+    const after=document.getElementById('afterBuy');
+    after.style.display='none';
+    buy.onclick=()=>{ after.style.display='grid'; window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'}); };
+  }
+</script>
+</body>
+</html>
